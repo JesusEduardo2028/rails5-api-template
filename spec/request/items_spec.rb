@@ -48,5 +48,15 @@ RSpec.describe "Items API", :type => :request do
       end
     end
 
+    context "invalid /items request" do
+      it "it should respond with a 422 error and total error messages" do
+        item_hash =  {name: nil, quantity: nil} 
+        post '/items', params: {item: item_hash }
+        error_message = json(response.body)
+        expect(response.status).to be(422)
+        expect(error_message.count).to be 2
+      end
+    end
+
   end
 end
