@@ -1,7 +1,7 @@
 module API
   class ItemsController < ApplicationController
     protect_from_forgery with: :null_session
-    
+
     #GET "/items"
     def index
       items = Item.all
@@ -24,6 +24,23 @@ module API
       end
      end
      
+     #PATCH "/items/:id"
+     def update
+      item = Item.find(params[:id])
+      if item.update(item_params)
+        render json: item, status: 200
+      else
+        render json: item.errors, status: 422
+      end
+     end
+
+     #DELETE "/items/:id"
+     def destroy
+      item = Item.find(params[:id])
+      item.destroy
+      head 204
+     end
+
      private
       def item_params 
         params.require(:item).permit(:name,:quantity)
