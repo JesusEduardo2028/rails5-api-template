@@ -23,6 +23,10 @@ gem 'turbolinks', '~> 5.x'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 gem 'pry'
+
+gem 'devise'
+gem 'devise_token_auth'
+gem 'omniauth'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -34,6 +38,7 @@ gem 'pry'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem "factory_girl_rails"
 end
 
 group :development do
@@ -48,7 +53,6 @@ end
 group :test do
   gem "rails-controller-testing", :git => "https://github.com/rails/rails-controller-testing"
   gem "rspec-rails", "3.5.0.beta1"
-  gem "factory_girl_rails"
   gem 'faker'
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 3.1'

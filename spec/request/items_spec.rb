@@ -2,7 +2,11 @@ require "rails_helper"
 
 RSpec.describe "Items API", :type => :request do
 
-  before { host! "api.rails-5-template.com" }
+  before do 
+    host! "api.rails-5-template.com" 
+    @user = FactoryGirl.create(:user)
+    @auth_headers = @user.create_new_auth_token
+  end
 
   context "GET methods" do
     context "/items" do
@@ -10,7 +14,7 @@ RSpec.describe "Items API", :type => :request do
         @items = FactoryGirl.create_list(:item, 10 )
       end
       it "should return all items" do
-        get "/items"
+        get "/items", headers: @auth_headers 
         response_data = json(response.body)[:data]
         expect(response.status).to be(200)
         expect(response_data.count).to be @items.count
@@ -22,7 +26,7 @@ RSpec.describe "Items API", :type => :request do
         @item = FactoryGirl.create(:item)
       end
       it "should return the correct item" do
-        get "/items/#{@item.id}"
+        get "/items/#{@item.id}" , headers: @auth_headers 
         response_data = json(response.body)[:data]
         item_attributes = {
           name: @item.name,
@@ -40,7 +44,7 @@ RSpec.describe "Items API", :type => :request do
     context "/items" do
       it "should creates a new item" do
         item_hash =  {name: "Item name", quantity: 200} 
-        post '/items', params: {item: item_hash }
+        post '/items', {params: {item: item_hash },headers: @auth_headers }
         new_item = json(response.body)[:data]
         expect(response.status).to be(201)
         expect(Item.count).to eq 1
@@ -51,7 +55,7 @@ RSpec.describe "Items API", :type => :request do
     context "invalid /items post request" do
       it "should respond with a 422 error and total error messages" do
         item_hash =  {name: nil, quantity: nil} 
-        post '/items', params: {item: item_hash }
+        post '/items', {params: {item: item_hash }, headers: @auth_headers } 
         error_message = json(response.body)
         expect(response.status).to be(422)
         expect(error_message.count).to be 2
@@ -66,7 +70,7 @@ RSpec.describe "Items API", :type => :request do
       end
       it "should update an item with new data" do
         new_item_name = "THE ITEM"
-        patch "/items/#{@item.id}",{params: {item: { name: new_item_name } }}
+        patch "/items/#{@item.id}",{params: {item: { name: new_item_name } } , headers:  @auth_headers} 
         expect(response.status).to be(200)
         expect(@item.reload.name).to eq new_item_name
       end
@@ -78,7 +82,7 @@ RSpec.describe "Items API", :type => :request do
       end
       it "should respond with a 422 error and total error messages" do
         new_item_name = ""
-        patch "/items/#{@item.id}",{params: {item: { name: new_item_name } }}
+        patch "/items/#{@item.id}",{params: {item: { name: new_item_name } }, headers: @auth_headers} 
         error_message = json(response.body)
         expect(response.status).to be(422)
         expect(error_message.count).to be 1
@@ -92,7 +96,7 @@ RSpec.describe "Items API", :type => :request do
     end
     context "items/:id " do
       it "should delete the item" do
-        delete "/items/#{@item.id}"
+        delete "/items/#{@item.id}" , headers: @auth_headers
         expect(response.status).to be(204)
         expect(Item.count).to eq(0)
       end

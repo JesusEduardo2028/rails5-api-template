@@ -37,6 +37,7 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
+
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
@@ -48,4 +49,23 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  # Rails.application.configure do
+  #   config.action_mailer.default_url_options = { :host => 'rails-5-template.dev' }
+  #   config.action_mailer.delivery_method = :smtp
+  #   config.action_mailer.smtp_settings = { :address => 'ails-5-template.dev', :port => 1025 }
+  # end
+  config.action_mailer.default_url_options = { :host => 'rails-5-template.dev' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => '3315871f26850a1c1',
+    :password => '5e83e853f94866',
+    :address => 'mailtrap.io',
+    :domain => 'mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
+
 end
+
+# when using pow
+#  OmniAuth.config.full_host = "http://rails-5-template.dev"
