@@ -27,6 +27,9 @@ gem 'pry'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'omniauth'
+gem 'materialize-sass'
+gem 'haml'
+gem 'haml-rails', '~> 0.9'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

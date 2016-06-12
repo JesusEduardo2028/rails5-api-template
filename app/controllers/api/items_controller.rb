@@ -1,5 +1,7 @@
 module API
   class ItemsController < ApplicationController
+    include DeviseTokenAuth::Concerns::SetUserByToken
+    
     before_action :authenticate_user!
 
     def_param_group :authentication_headers do
