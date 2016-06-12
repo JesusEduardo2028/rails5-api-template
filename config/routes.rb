@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  apipie
   devise_for :users
   constraints subdomain: 'api' do
     namespace :api , path: '/' ,defaults: { format: :json } do
