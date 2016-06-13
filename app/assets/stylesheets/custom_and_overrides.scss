@@ -1,8 +1,27 @@
 @import "materialize/components/color";
-$primary-color: color("blue", "lighten-2") !default;
+
+$primary-color: black !default;
+// $primary-color-light: false !default;
+// $primary-color-dark: false !default;
+// @if not $primary-color-light {
+//   $primary-color-light: lighten($primary-color, 15%);
+// }
+// @if not $primary-color-dark {
+//   $primary-color-dark: darken($primary-color, 15%);
+// }
+$secondary-color: color("blue", "lighten-1") !default;
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+
+$link-color: color("light-blue", "darken-1") !default;
+
 @import 'materialize';
 @import "materialize/extras/nouislider";
 
+
+body {
+  background-color: #fcfcfc!important;
+}
 
 nav ul a,
 nav .brand-logo {
@@ -15,6 +34,12 @@ p {
 
 .button-collapse {
   color: #26a69a;
+}
+
+/* invalid color */
+.field_with_errors input {
+ border-bottom: 1px solid red!important;
+ box-shadow: 0 1px 0 0 red!important;
 }
 
 .parallax-container {
@@ -43,6 +68,10 @@ p {
   }
 }
 
+.vanish{
+  max-width: 500px;
+}
+
 .icon-block {
   padding: 0 15px;
 }
@@ -53,3 +82,20 @@ p {
 footer.page-footer {
   margin: 0;
 }
+
+.alert{
+    padding: 10px;
+    position: fixed!important;
+    top: 40px!important;
+    right: 20px!important;
+    width: 400px!important;
+    z-index: 2000;
+    background-color: rgba(0, 0, 19, 0.9)!important;
+    color: white!important;
+    border: 1px solid gray!important;
+  a {
+    color: #FFF;
+    text-decoration: none;
+  }
+}
+

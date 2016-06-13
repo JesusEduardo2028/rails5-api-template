@@ -1,0 +1,10 @@
+#toast-container
+  -if flash[:error]
+    .toast.vanish
+      =flash[:error]
+  -if flash[:alert]
+    .toast.vanish
+      =flash[:alert]
+  -if flash[:notice]
+    .toast.vanish
+      =flash[:notice]

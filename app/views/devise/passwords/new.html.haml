@@ -1,0 +1,16 @@
+%br
+%h5.center-align Forgot password?
+.row
+  .col.m6.offset-m3.s12
+    .card
+      .card-content
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          = devise_error_messages!
+          .field
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true
+          .actions.center-align
+            = f.submit "Send me reset password instructions",class: "btn waves-effect waves-light"
+      .card-action
+        = render "devise/shared/links"
