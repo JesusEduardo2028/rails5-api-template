@@ -7,8 +7,14 @@
     %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %header
-      =render "layouts/header"
-    .container
-      =render "layouts/flash_messages"
-      = yield
+    / Page Layout here
+    .row.fixed
+      .col.s12.l2.hide-on-med-and-down.sidebar.z-depth-1
+        %ul
+          =render "layouts/header_links"
+      .col.s12.l10.no-padding
+        %header
+          =render "layouts/header"
+          =render "layouts/flash_messages"
+        .content.container
+          =yield

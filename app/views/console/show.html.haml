@@ -1,2 +1,13 @@
-%h1 Console#show
-%p Find me in app/views/console/show.html.haml
+%table
+  %thead
+    %tr
+      %th{"data-field" => "id"} Name
+      %th{"data-field" => "quantity"} Quantity
+  %h3 All items
+  %tbody
+    -@items.each do |item| 
+      %tr
+        %td 
+          =item.name
+        %td
+          =item.quantity

@@ -1,6 +1,6 @@
 @import "materialize/components/color";
 
-$primary-color: black !default;
+$primary-color: color("grey" ,"darken-4") !default;
 // $primary-color-light: false !default;
 // $primary-color-dark: false !default;
 // @if not $primary-color-light {
@@ -33,7 +33,7 @@ p {
 }
 
 .button-collapse {
-  color: #26a69a;
+  color: $secondary-color;
 }
 
 /* invalid color */
@@ -99,3 +99,39 @@ footer.page-footer {
   }
 }
 
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body{
+  margin: 0 auto;
+}
+
+.fixed{
+  display: inline!important;
+}
+
+.sidebar{
+  background: $primary-color;
+  z-index: 1000!important;
+  height: 100%;
+}
+
+nav {
+    z-index: 3!important;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.16), 0 0 0px 0 rgba(0, 0, 0, 0.12)!important;
+}
+
+nav{
+  z-index: 500!important;
+}
+
+.content{
+  min-width: 90%!important;
+}
+.no-padding{
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+}

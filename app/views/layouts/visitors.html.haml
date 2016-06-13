@@ -8,6 +8,16 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %header
-      =render "layouts/header"
+      %nav.white{:role => "navigation"}
+        .nav-wrapper.container
+          %a#logo-container.brand-logo{:href => "/"} Logo
+          %ul.right.hide-on-med-and-down
+            %li
+              =link_to "Sign in", new_user_session_path
+          %ul#nav-mobile.side-nav{:style => "transform: translateX(-100%);"}
+            %li
+              =link_to "Sign in", new_user_session_path
+          %a.button-collapse{"data-activates" => "nav-mobile", :href => "#"}
+            %i.material-icons menu
     =render "layouts/flash_messages"
     = yield

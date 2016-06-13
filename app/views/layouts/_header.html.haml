@@ -1,9 +1,12 @@
 %nav.white{:role => "navigation"}
-  .nav-wrapper.container
+  .content.nav-wrapper.container
     %a#logo-container.brand-logo{:href => "/"} Logo
     %ul.right.hide-on-med-and-down
-      =render "layouts/header_links"
+      %li
+        %a{:href => "#"}
+          %i.material-icons more_vert
     %ul#nav-mobile.side-nav{:style => "transform: translateX(-100%);"}
       =render "layouts/header_links"
     %a.button-collapse{"data-activates" => "nav-mobile", :href => "#"}
       %i.material-icons menu
+
