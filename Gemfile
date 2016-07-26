@@ -64,6 +64,9 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 3.1'
 end
+#rails admin
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
 
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
